@@ -9,11 +9,7 @@ export default function About(props) {
 
   return (
     <Layout {...aboutPage}>
-      {aboutPage.blocks.map((block) => {
-        const { id, blocktype, ...componentProps } = block
-        const Component = sections[blocktype] || Fallback
-        return <Component key={id} {...componentProps} />
-      })}
+
     </Layout>
   )
 }
@@ -31,13 +27,6 @@ export const query = graphql`
       blocks: content {
         id
         blocktype
-        ...AboutHeroContent
-        ...AboutStatListContent
-        ...HomepageProductListContent
-        ...AboutLeadershipContent
-        ...HomepageBenefitListContent
-        ...AboutLogoListContent
-        ...HomepageCtaContent
       }
     }
   }
