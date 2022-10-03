@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import {
   Twitter,
   Twitch,
@@ -50,7 +50,7 @@ const getSocialName = ({ service }) => {
   return socialMedia[service]?.name
 }
 
-export default function Footer() {
+export default function SocialLinks() {
   const data = useStaticQuery(graphql`
     query {
       layout {
@@ -80,7 +80,7 @@ export default function Footer() {
   const { links, meta, socialLinks, copyright } = data.layout.footer
 
   return (
-    <>
+    <div>
       {socialLinks &&
         socialLinks.map((link) => {
           const url = getSocialURL(link)
@@ -92,6 +92,7 @@ export default function Footer() {
             )
           )
         })}
-    </>
+    </div>
+
   )
 }

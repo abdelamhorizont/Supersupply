@@ -1,0 +1,68 @@
+@import "../../styles/global.scss";
+
+@media (max-width: $breakpoint-tablet) {
+   nav {
+      border-bottom: 1px solid black;
+
+      div {
+         display: block;
+
+         div {
+            display        : flex;
+            justify-content: space-around;
+         }
+
+         .mobile-menu {
+            display        : flex;
+            justify-content: space-between;
+            border-bottom  : 1px solid black;
+            padding        : 1em;
+         }
+
+         .mobile-menu-content {
+            border-bottom: 1px solid black;
+            display      : block;
+
+            // padding: 1em;
+            li {
+               display: inline;
+            }
+
+            div {
+               padding: 1em;
+            }
+
+            div:not(:last-child) {
+               border-bottom: 1px solid black;
+            }
+         }
+      }
+   }
+}
+
+@media (min-width: $breakpoint-tablet) {
+   nav {
+      .menu-top {
+         border-bottom: 1px solid black;
+      }
+      .menu-bottom {
+         border-top: 1px solid black;
+      }
+
+      div {
+         display        : flex;
+         justify-content: space-between;
+         padding        : 0.5em;
+
+         div {
+            display        : flex;
+            justify-content: space-between;
+
+            li {
+               margin : 0em 1em;
+               display: inline;
+            }
+         }
+      }
+   }
+}

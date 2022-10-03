@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://gatsbydatocmshomepage.gatsbyjs.io/",
     title: "SUPERSUPPLY",
-    author: `abdel am meer`,
+    author: `SUPERSUPPLY`,
     description: "",
   },
   plugins: [
@@ -24,6 +24,7 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-vanilla-extract",
+    `gatsby-plugin-sass`,
     {
       resolve: "gatsby-plugin-manifest",
       options: {
