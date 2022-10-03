@@ -1,10 +1,11 @@
+
 import * as React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import * as sections from "../components/sections"
 import Fallback from "../components/fallback"
 
-export default function OurLocations(props) {
+export default function Services(props) {
   const { aboutPage } = props.data
 
   return (
