@@ -9,4 +9,5 @@
 // export { default as AboutHero } from "./about-hero"
 // export { default as AboutStatList } from "./about-stat-list"
 // export { default as AboutLeadership } from "./about-leadership"
-// export { default as AboutLogoList } from "./about-logo-list"
+export { default as ProminentText } from "./prominent-text/prominent-text"
+export { default as HeroImage } from "./hero-image/hero-image"

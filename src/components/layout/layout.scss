@@ -1,5 +1,7 @@
 @import "../../styles/global.scss";
 
+
+
 @media (max-width: $breakpoint-tablet) {
    nav {
       border-bottom: 1px solid black;
@@ -7,33 +9,71 @@
       div {
          display: block;
 
-         div {
-            display        : flex;
-            justify-content: space-around;
-         }
+         // div {
+         //    display        : flex;
+         //    justify-content: space-around;
+
+         // }
 
          .mobile-menu {
+            position: relative;
             display        : flex;
             justify-content: space-between;
-            border-bottom  : 1px solid black;
+            z-index: 2;
+
             padding        : 1em;
+            border-bottom  : 1px solid black;
+            background-color: white;
+
+            #logo{
+               font-size: 20pt;
+            }
+
+            .menu-buttons{
+               display: flex;
+               gap: 1rem;
+               
+               li{
+                  display: flex;
+                  align-self: flex-start;
+                  
+                  svg{
+                     align-self: flex-start;
+                     margin-top: -0.1rem;
+                  }
+               }
+            }
+            
          }
 
          .mobile-menu-content {
-            border-bottom: 1px solid black;
             display      : block;
-
-            // padding: 1em;
-            li {
-               display: inline;
-            }
+            z-index: 1;
+            transform: translateY(-200px);
+            
+            background-color: white;
+            border-bottom: 1px solid black;
 
             div {
                padding: 1em;
+
+               display              : grid;
+               grid-template-columns: 1fr 1fr 1fr;
+               // justify-content: center;
+
+               li {
+                  display     : inline;
+                  // justify-self: center;
+               }
             }
 
             div:not(:last-child) {
                border-bottom: 1px solid black;
+            }
+
+            div:last-child {
+               display              : grid;
+               // grid-template-columns: 1fr 1fr;
             }
          }
       }
@@ -42,11 +82,24 @@
 
 @media (min-width: $breakpoint-tablet) {
    nav {
+      background-color: white;
+
+      #logo{
+         font-size: 20pt;
+      }
+
       .menu-top {
          border-bottom: 1px solid black;
       }
+
       .menu-bottom {
          border-top: 1px solid black;
+         position: fixed;
+         bottom: 0vh;
+
+         width: 100%;
+         background-color: white;
+
       }
 
       div {
@@ -63,6 +116,12 @@
                display: inline;
             }
          }
+      }
+
+      .lang{
+         display: flex;
+         align-items: flex-start;
+         padding: 0;
       }
    }
 }
