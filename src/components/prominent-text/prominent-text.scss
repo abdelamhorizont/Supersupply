@@ -1,0 +1,38 @@
+@import "../../styles/global.scss";
+
+.prominent-text {
+   width : 100vw;
+   height: 60vh;
+
+   display        : flex;
+   justify-content: center;
+   align-items    : center;
+
+   background-color: white;
+   border-bottom: 1px solid black;
+
+   .text {
+      max-width : 70vw;
+      text-align: center;
+
+      h1 {
+         font-size  : $fontsize-mid;
+         line-height: calc($fontsize-mid * 1.5);
+      }
+
+      h3 {
+         font-size    : $fontsize;
+         margin-bottom: 1rem;
+      }
+   }
+}
+
+@media (max-width: $breakpoint-tablet) {
+
+   .prominent-text {
+   
+      .text {
+         max-width : 92vw;
+      }
+   }
+}

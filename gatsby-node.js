@@ -420,7 +420,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
       description: String
       image: HomepageImage
       html: String!
-      body: DatoCmsDatoCmsPageBodyStructuredText
+      # body: DatoCmsDatoCmsPageBodyStructuredText #
     }
   `)
 
@@ -734,7 +734,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
       image: HomepageImage
         @link(by: "originalId", from: "entityPayload.attributes.metadata.image")
       html: String! @richText
-      body: DatoCmsDatoCmsPageBodyStructuredText
-    }
+      # body: DatoCmsDatoCmsPageBodyStructuredText #
+    } 
   `)
 }

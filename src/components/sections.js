@@ -11,3 +11,4 @@
 // export { default as AboutLeadership } from "./about-leadership"
 export { default as ProminentText } from "./prominent-text/prominent-text"
 export { default as HeroImage } from "./hero-image/hero-image"
+export { default as ProjectList } from "./projectlist/projectlist"

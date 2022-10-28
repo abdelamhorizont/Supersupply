@@ -1,0 +1,22 @@
+@import "../../styles/global.scss";
+
+.projectlist{
+   background-color: white;
+
+   h1{
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      font-size: $fontsize-mid;
+
+      border-bottom: 1px solid black;
+   }
+
+   a{
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      font-size: $fontsize;
+   }
+
+}

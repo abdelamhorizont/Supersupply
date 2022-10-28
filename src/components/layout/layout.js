@@ -1,6 +1,7 @@
 import * as React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
+import Div100vh from 'react-div-100vh'
 
 import { Menu, X } from "react-feather"
 import Head from "./head"
@@ -42,15 +43,20 @@ const Layout = (props) => {
 
   const [mobile, setMobile] = useState(false)
   const [isOpen, setOpen] = useState(false)
+  const [navHeight, setNavHeight] = useState(0)
+  const ref = useRef(null)
 
   React.useEffect(() => {
     const isBrowser = () => typeof window !== `undefined`
-    setMobile(isBrowser() && window.screen.width < 768)
+    window.addEventListener('resize', setMobile(isBrowser() && window.screen.width < 768))
   }, [])
+
+  useEffect(() => {
+    mobile ? setNavHeight(ref.current.clientHeight) : setNavHeight(ref.current.clientHeight)
+  })
 
   const isOpenStyle = {
     transform: isOpen ? "translateY(0px)" : "translateY(-200px)",
-    // visibility: isOpen ? "visible" : "hidden",
     transition: isOpen ? "transform 0.5s, visibiliy 0.1s 0.5s" : "visibiliy 0.1s, transform 0.5s"
   }
 
@@ -72,7 +78,7 @@ const Layout = (props) => {
                   </div>
                 </div>
 
-                <div className="mobile-menu-content" style={isOpenStyle}>
+                <div ref={ref} className="mobile-menu-content" style={isOpenStyle}>
                   <div>
                     <li><Link to="/">Projects</Link></li>
                     <li><Link to="/">Services</Link></li>
@@ -92,6 +98,8 @@ const Layout = (props) => {
             </nav>
           </header>
 
+          <div style={{ marginTop: - navHeight }}></div>
+
           {props.children}
 
         </>
@@ -99,12 +107,12 @@ const Layout = (props) => {
         <>
           <header>
             <nav>
-              <div className="menu-top">
+              <div ref={ref} className="menu-top">
                 <div>
-                <li id="logo" key="SUPERSUPPLY"><Link to="/">SUPERSUPPLY</Link></li>
+                  <li id="logo" key="SUPERSUPPLY"><Link to="/">SUPERSUPPLY</Link></li>
                 </div>
 
-                <div>
+                <div className="nav-middle-block">
                   <li key="Our Locations"><Link to="/our-locations">Our Locations</Link></li>
                   <li><Link to="/">Projects</Link></li>
                   <li><Link to="/">Services</Link></li>
@@ -114,12 +122,15 @@ const Layout = (props) => {
                   <li><Link to="/">About</Link></li>
                   <div className="lang"> <button>De</button> / <button>En</button></div>
                 </div>
+
               </div>
             </nav>
           </header>
+          <div style={{ height: navHeight }}></div>
 
           {props.children}
 
+          <div style={{ height: navHeight }}></div>
           <footer>
             <nav>
               <div className="menu-bottom">
@@ -127,6 +138,7 @@ const Layout = (props) => {
                   <li><Link to="/">Contact</Link></li>
                   <li><Link to="/">Jobs</Link></li>
                 </div>
+                <div></div>
                 <div>
                   <li><Link to="/">Imprint</Link></li>
                   <li><Link to="/">Privacy Policy</Link></li>

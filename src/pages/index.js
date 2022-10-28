@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect } from "react"
+// import { useEffect } from "react"
 import _ from "lodash";
 
 import { graphql } from "gatsby"
@@ -20,14 +20,13 @@ export default function Homepage(props) {
   
   return (
     <Layout {...homepage}>
-      {/* <h1>{homepage.blocks[0].kicker}</h1> */}
-      {homepage.blocks.map((block) => {
+      {homepage.blocks.map((block) => { 
         const { ...componentProps } = block
-        let blockType = _.camelCase(block.model.apiKey)
+        let blockType = _.camelCase(block?.model.apiKey)
         blockType = capitalizeFirstLetter(blockType)
 
         const Component = sections[blockType] || Fallback
-        return <Component key={block.id} {...componentProps} />
+        return <Component key={block?.id} {...componentProps} />
       })}
     </Layout>
   )
@@ -41,6 +40,7 @@ export const query = graphql`
         blocks: mycontent {
           ...ProminentText 
           ...HeroImage
+          ...ProjectList
         }
       }
     }

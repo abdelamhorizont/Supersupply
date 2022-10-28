@@ -1,9 +1,16 @@
 import React from 'react'
 import { graphql, useStaticQuery, Link } from "gatsby"
 
+import "./prominent-text.scss"
+
 export default function ProminentText(props) {
    return (
-      <div>{props.kicker}</div>
+      <div className='prominent-text'>
+         <div className='text'>
+            <h3>{props.kicker}</h3>
+            <h1>{props.text}</h1>
+         </div>
+      </div>
    )
 }
 

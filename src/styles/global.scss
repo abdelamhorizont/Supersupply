@@ -1,8 +1,14 @@
+
 html {
    scroll-behavior : smooth;
-   font-size: 18px;
+   font-size: clamp(18px, 1.3vw, 24px);
 
    background-color:rgb(239, 239, 239);
 }
 
 $breakpoint-tablet: 768px;
+
+$fontsize: 1rem;
+// $fontsize: 18px;
+$fontsize-mid: 1.5rem;
+$fontsize-big: 2rem;
