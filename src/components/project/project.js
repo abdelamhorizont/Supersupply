@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StructuredText } from 'react-datocms'
 
 import { graphql, useStaticQuery, Link } from "gatsby"
@@ -9,26 +9,33 @@ import "./project.scss"
 export default function Project(props) {
    const project = props.data
 
-   return (
-      <div className='project'>
-         <h2>{project.title}</h2>
-         {/* <StructuredText data={project.text} /> */}
+   const [visible, setvisible] = useState(false)
 
-         <GatsbyImage
-            className='image'
-            alt={project.images[0].alt || project.images[0].title || project.images[0].filename }
-            image={getImage(project.images[0].gatsbyImageData)}
-         />
-      </div>
+   const [mobile, setMobile] = useState(false)
+   React.useEffect(() => {
+      const isBrowser = () => typeof window !== `undefined`
+      window.addEventListener('resize', setMobile(isBrowser() && window.screen.width < 768))
+   }, [])
+
+   return (
+      <div className={props.OurLocations && !mobile ? 'location project' : 'project'}>
+         <h2 onClick={() => setvisible(!visible)}>{project.title}</h2>
+    
+         <div className='left-box'>
+            <div className={visible || props.OurLocations && !mobile ? 'visible' : 'hidden'}>
+               <StructuredText data={project.text} />
+            </div>
+         </div>
+
+         <div className='project-images'>
+            <GatsbyImage
+               style={{ height: '100%' }}
+               imageStyle={{ objectFit: `cover` }}
+               alt={project.images[0].alt || project.images[0].title || project.images[0].filename}
+               image={getImage(project.images[0].gatsbyImageData)}
+            />
+         </div>
+      </div >
    )
 }
 
-
-// export const query = graphql`
-//   fragment Project on DatoCmsProject {
-//       title
-//       text {
-//         value
-//       }
-//  }
-// `

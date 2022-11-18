@@ -2,7 +2,8 @@
 
 .prominent-text {
    width : 100vw;
-   height: 60vh;
+   padding: 10vh 0vw;
+   // height: 90vh;
 
    display        : flex;
    justify-content: center;
@@ -18,6 +19,8 @@
       h1 {
          font-size  : $fontsize-mid;
          line-height: calc($fontsize-mid * 1.5);
+         white-space: pre-line;
+
       }
 
       h3 {

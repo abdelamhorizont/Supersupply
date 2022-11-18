@@ -1,32 +1,33 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout/layout"
 import * as sections from "../components/sections"
 import Fallback from "../components/fallback"
 
 export default function Contact(props) {
-  const { aboutPage } = props.data
+  // const data = useStaticQuery(graphql`
+  // {
+  //   allDatoCmsContact {
+  //     nodes {
+  //       contact
+  //     }
+  //   }
+  // }
+  // `)
+  const { contact } = props.data.allDatoCmsContact.nodes[0]
 
   return (
-    <Layout {...aboutPage}>
-
+    <Layout>
+      <sections.ProminentText text={contact} />
     </Layout>
   )
 }
 
 export const query = graphql`
   {
-    aboutPage {
-      id
-      title
-      description
-      image {
-        id
-        url
-      }
-      blocks: content {
-        id
-        blocktype
+    allDatoCmsContact {
+      nodes {
+        contact
       }
     }
   }

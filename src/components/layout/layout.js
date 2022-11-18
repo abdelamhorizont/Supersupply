@@ -80,18 +80,18 @@ const Layout = (props) => {
 
                 <div ref={ref} className="mobile-menu-content" style={isOpenStyle}>
                   <div>
-                    <li><Link to="/">Projects</Link></li>
-                    <li><Link to="/">Services</Link></li>
+                    <li key='projects'><Link to="/projects">Projects</Link></li>
+                    <li key='services'><Link to="/services">Services</Link></li>
                     <li key="Our Locations"><Link to="/our-locations">Our Locations</Link></li>
                   </div>
                   <div>
                     <li><Link to="/about">About</Link></li>
-                    <li><Link to="/">Contact</Link></li>
-                    <li><Link to="/">Jobs</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
+                    <li><Link to="/jobs">Jobs</Link></li>
                   </div>
                   <div>
-                    <li><Link to="/">Imprint</Link></li>
-                    <li><Link to="/">Privacy Policy</Link></li>
+                    <li><Link to="/imprint">Imprint</Link></li>
+                    <li><Link to="/privacy-policy">Privacy Policy</Link></li>
                   </div>
                 </div>
               </div>
@@ -114,12 +114,12 @@ const Layout = (props) => {
 
                 <div className="nav-middle-block">
                   <li key="Our Locations"><Link to="/our-locations">Our Locations</Link></li>
-                  <li><Link to="/">Projects</Link></li>
-                  <li><Link to="/">Services</Link></li>
+                  <li><Link to="/projects">Projects</Link></li>
+                  <li><Link to="/services">Services</Link></li>
                 </div>
 
                 <div>
-                  <li><Link to="/">About</Link></li>
+                  <li><Link to="/about">About</Link></li>
                   <div className="lang"> <button>De</button> / <button>En</button></div>
                 </div>
 
@@ -135,13 +135,13 @@ const Layout = (props) => {
             <nav>
               <div className="menu-bottom">
                 <div>
-                  <li><Link to="/">Contact</Link></li>
-                  <li><Link to="/">Jobs</Link></li>
+                  <li><Link to="/contact">Contact</Link></li>
+                  <li><Link to="/jobs">Jobs</Link></li>
                 </div>
                 <div></div>
                 <div>
-                  <li><Link to="/">Imprint</Link></li>
-                  <li><Link to="/">Privacy Policy</Link></li>
+                  <li><Link to="/imprint">Imprint</Link></li>
+                  <li><Link to="/privacy-policy">Privacy Policy</Link></li>
                 </div>
               </div>
               {/* <div>

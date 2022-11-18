@@ -1,24 +1,34 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { graphql, useStaticQuery, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Project from '../project/project'
 import "./projectlist.scss"
+import OurLocations from '../../pages/our-locations'
 
 export default function ProjectList(props) {
-   const linkProjects = props.linkProject
+   const projects = props.linkProject ? props.linkProject.links : props.data.nodes
 
    return (
       <div className='projectlist'>
-         <h1>{props.listTitle}</h1>
-         {
-            linkProjects.links.map((project) => {
-               return(
-                  <Project data={project} />
-               )
-            })
+         {!props.OurLocations &&
+            <h1>{props.listTitle}</h1>
          }
-         <Link>more...</Link>
+         <div className={!props.OurLocations && 'projectgrid'}>
+            {
+               projects.map((project) => {
+                  return (
+                     <Project OurLocations={props.OurLocations} data={project} />
+                  )
+               })
+            }
+
+            {!props.OurLocations &&
+               <div className='more-link'>
+                  <Link to="/our-locations">more...</Link>
+               </div>
+            }
+         </div>
       </div>
    )
 }
@@ -36,7 +46,7 @@ export const query = graphql`
         id
         title
         images {
-          gatsbyImageData
+         gatsbyImageData
         }
         text {
           value

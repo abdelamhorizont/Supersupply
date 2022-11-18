@@ -1,14 +1,31 @@
 import * as React from "react"
 import { graphql } from "gatsby"
+import { useState } from "react"
+
 import Layout from "../components/layout/layout"
-import * as sections from "../components/sections"
-import Fallback from "../components/fallback"
+import Projectlist from "../components/projectlist/projectlist"
 
 export default function OurLocations(props) {
-  const { aboutPage } = props.data
+  const { projects } = props.data.allDatoCmsProject
+
+  const [mobile, setMobile] = useState(false)
+  React.useEffect(() => {
+    const isBrowser = () => typeof window !== `undefined`
+    window.addEventListener('resize', setMobile(isBrowser() && window.screen.width < 768))
+  }, [])
 
   return (
-    <Layout {...aboutPage}>
+    <Layout>
+      {mobile &&
+        <div className="title-block">
+          <h1>Our Locations</h1>
+        </div>
+      }
+
+      <Projectlist
+        OurLocations={true}
+        data={props.data.allDatoCmsProject}
+      />
 
     </Layout>
   )
@@ -16,17 +33,15 @@ export default function OurLocations(props) {
 
 export const query = graphql`
   {
-    aboutPage {
-      id
-      title
-      description
-      image {
-        id
-        url
-      }
-      blocks: content {
-        id
-        blocktype
+    allDatoCmsProject(filter: {location: {eq: true}, locale: {eq: "en"},}) {
+      nodes {
+        title
+        text {
+          value
+        }
+        images {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
       }
     }
   }

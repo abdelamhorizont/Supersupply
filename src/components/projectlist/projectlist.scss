@@ -1,22 +1,45 @@
 @import "../../styles/global.scss";
 
-.projectlist{
+.title-block{
    background-color: white;
 
-   h1{
-      display: flex;
+   h1 {
+      display        : flex;
       justify-content: center;
-      padding: 1rem;
-      font-size: $fontsize-mid;
+      padding        : 1rem;
+      font-size      : $fontsize-mid;
+   
+      border-bottom: 1px solid black;
+   }
+}
+
+.projectlist {
+   background-color: white;
+
+   h1 {
+      display        : flex;
+      justify-content: center;
+      padding        : 1rem;
+      font-size      : $fontsize-mid;
 
       border-bottom: 1px solid black;
    }
 
-   a{
-      display: flex;
+   a {
+      display        : flex;
       justify-content: center;
-      padding: 1rem;
-      font-size: $fontsize;
+      padding        : 1rem;
+      font-size      : $fontsize;
    }
+}
 
+@media (min-width: $breakpoint-tablet) {
+   .projectgrid {
+      display              : grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      .more-link {
+         grid-column: 1/4;
+      }      
+   }
 }

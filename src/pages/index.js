@@ -1,5 +1,4 @@
 import * as React from "react"
-// import { useEffect } from "react"
 import _ from "lodash";
 
 import { graphql } from "gatsby"

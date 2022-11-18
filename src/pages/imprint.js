@@ -1,33 +1,35 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout/layout"
 import * as sections from "../components/sections"
 import Fallback from "../components/fallback"
+import Text from "../components/text/text"
 
 export default function Imprint(props) {
-  const { aboutPage } = props.data
+  const data = useStaticQuery(graphql`
+  {
+    allDatoCmsImprint {
+      nodes {
+        imprint
+      }
+    }
+  }
+  `)
+  const { imprint } = data.allDatoCmsImprint.nodes[0]
 
   return (
-    <Layout {...aboutPage}>
-
+    <Layout>
+      <Text text={imprint} />
     </Layout>
   )
 }
 
-export const query = graphql`
-  {
-    aboutPage {
-      id
-      title
-      description
-      image {
-        id
-        url
-      }
-      blocks: content {
-        id
-        blocktype
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   {
+//     allDatoCmsContact {
+//       nodes {
+//         contact
+//       }
+//     }
+//   }
+// `
