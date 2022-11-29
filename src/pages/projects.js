@@ -5,8 +5,14 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Projectlist from "../components/projectlist/projectlist"
 
-export default function Projects(props) {
-  const { projects } = props.data.allDatoCmsProject
+export default function Projects({data, location}) {
+  const [lang, setLang] = useState(location.state.lang || 'en')
+
+  const passLang = (lang) => {
+    setLang(lang)
+  }
+
+  const projects = data.allDatoCmsProject.nodes.filter(node =>  node.locale == lang)
 
   const [mobile, setMobile] = useState(false)
   React.useEffect(() => {
@@ -15,7 +21,7 @@ export default function Projects(props) {
   }, [])
 
   return (
-    <Layout>
+    <Layout language={lang} passLang={passLang}>
       {mobile &&
       <div className="title-block">
         <h1>Projects</h1>
@@ -24,7 +30,7 @@ export default function Projects(props) {
 
       <Projectlist
         OurLocations={true}
-        data={props.data.allDatoCmsProject}
+        data={projects}
       />
 
     </Layout>
@@ -33,9 +39,10 @@ export default function Projects(props) {
 
 export const query = graphql`
   {
-    allDatoCmsProject(filter: {locale: {eq: "en"},}) {
+    allDatoCmsProject {
       nodes {
         title
+        locale
         text {
           value
         }

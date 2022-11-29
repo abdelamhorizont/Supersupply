@@ -30,7 +30,7 @@ export default function Project(props) {
          <div className='project-images'>
             <GatsbyImage
                style={{ height: '100%' }}
-               imageStyle={{ objectFit: `cover` }}
+               // imageStyle={{ objectFit: `cover` }}
                alt={project.images[0].alt || project.images[0].title || project.images[0].filename}
                image={getImage(project.images[0].gatsbyImageData)}
             />

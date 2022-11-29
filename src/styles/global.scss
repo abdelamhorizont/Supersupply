@@ -3,12 +3,12 @@ html {
    scroll-behavior : smooth;
    font-size: clamp(18px, 1.3vw, 24px);
 
-   background-color:rgb(239, 239, 239);
+   background-color:rgb(255, 255, 255);
 }
 
 $breakpoint-tablet: 768px;
 
 $fontsize: 1rem;
 // $fontsize: 18px;
-$fontsize-mid: 1.5rem;
-$fontsize-big: 2rem;
+$fontsize-mid: 1.3rem;
+$fontsize-big: 1.8rem;

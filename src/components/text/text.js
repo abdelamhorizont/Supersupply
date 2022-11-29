@@ -13,13 +13,14 @@ export default function Text(props) {
 }
 
 
-export const query = graphql`
-  fragment ProminentText on DatoCmsProminentText {
-     model {
-        apiKey
-      }
-   kicker
-   text
-   id
- }
-`
+// export const query = graphql`
+//   fragment ProminentText on DatoCmsProminentText {
+//      model {
+//         apiKey
+//       }
+//    kicker
+//    text
+//    locale
+//    id
+//  }
+// `

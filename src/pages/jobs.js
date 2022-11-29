@@ -9,11 +9,17 @@ import ListEl from "../components/list-el/list-el"
 import "../components/project/project.scss"
 
 
-export default function Jobs(props) {
-   const { generalText, jobEntries } = props.data.allDatoCmsJob.nodes[0]
+export default function Jobs({data, location}) {
+   const [lang, setLang] = useState(location.state.lang || 'en')
+
+   const passLang = (lang) => {
+     setLang(lang)
+   }
+
+   const { generalText, jobEntries } = data.allDatoCmsJob.nodes.filter(node =>  node.locale == lang)[0]
 
    return (
-      <Layout>
+      <Layout language={lang} passLang={passLang}>
          {
             jobEntries.map(job => {
                return (
@@ -33,6 +39,7 @@ export const query = graphql`
   {
    allDatoCmsJob {
       nodes {
+         locale
          generalText {
             kicker
             text

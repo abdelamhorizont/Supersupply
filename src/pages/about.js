@@ -1,4 +1,6 @@
 import * as React from "react"
+import { useState } from "react"
+
 import _ from "lodash";
 
 import { graphql } from "gatsby"
@@ -10,18 +12,24 @@ import "../styles/reset.scss"
 import "../styles/global.scss"
 import "../styles/typo.scss"
 
-export default function About(props) {
-  const { aboutPage } = props.data
-  console.log(aboutPage.blocks)
-  //mycontent ist leer aber wieso?
+export default function About({data, location}) {
+  // const { aboutPage } = data
+  // console.log(location.state.lang)
+
+  const [lang, setLang] = useState(location.state.lang || 'en')
+
+  const passLang = (lang) => {
+    setLang(lang)
+  }
+
+  const aboutPage = data.allDatoCmsAboutpage.nodes.filter(node =>  node.locale == lang)[0]
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   
   return (
-    <Layout {...aboutPage}>
-      {/* <sections.ProminentText kicker={aboutPage.blocks[0].ProminentText[0].kicker} /> */}
+    <Layout language={lang} passLang={passLang} {...aboutPage}>
       {aboutPage.blocks.map((block) => { 
         const { ...componentProps } = block
         let blockType = _.camelCase(block?.model.apiKey)
@@ -36,49 +44,31 @@ export default function About(props) {
 
 export const query = graphql`
   {
-    aboutPage {
-      ... on DatoCmsAboutpage {
+    allDatoCmsAboutpage {
+      nodes {     
         title
         id
+        locale
         blocks: mycontent {
           ...ProminentText 
           ...HeroImage
         }
-      }
     }
   }
+}
 `
-// export const query = graphql`
-//   {
-//     aboutPage {
-//       id
-//       title
-//       description
-//       image {
-//         id
-//         url
-//       }
-//       blocks: content {
-//         id
-//         blocktype
-//       }
-//     }
-//   }
-// `
 
 // export const query = graphql`
 //   {
-//     homepage {
-//       ... on DatoCmsHomepage {
+//     aboutPage {
+//       ... on DatoCmsAboutpage {
 //         title
+//         id
 //         blocks: mycontent {
 //           ...ProminentText 
 //           ...HeroImage
-//           ...ProjectList
 //         }
 //       }
 //     }
 //   }
 // `
-
-

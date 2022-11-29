@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useState } from "react";
 import _ from "lodash";
 
 import { graphql } from "gatsby"
@@ -10,18 +11,25 @@ import "../styles/reset.scss"
 import "../styles/global.scss"
 import "../styles/typo.scss"
 
-export default function Homepage(props) {
-  const { homepage } = props.data
+export default function Homepage({data, location}) {
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  
+
+  const [lang, setLang] = useState(location.state.lang || 'en')
+
+  const passLang = (lang) => {
+    setLang(lang)
+  }
+
+  const homepage = data.allDatoCmsHomepage.nodes.filter(node =>  node.locale == lang)[0]
+
   return (
-    <Layout {...homepage}>
+    <Layout language={lang} passLang={passLang} {...homepage}>
       {homepage.blocks.map((block) => { 
         const { ...componentProps } = block
-        let blockType = _.camelCase(block?.model.apiKey)
+        let blockType = _.camelCase(block?.model?.apiKey)
         blockType = capitalizeFirstLetter(blockType)
 
         const Component = sections[blockType] || Fallback
@@ -33,13 +41,16 @@ export default function Homepage(props) {
 
 export const query = graphql`
   {
-    homepage {
-      ... on DatoCmsHomepage {
+    allDatoCmsHomepage {
+      nodes {
         title
+        locale
         blocks: mycontent {
           ...ProminentText 
           ...HeroImage
           ...ProjectList
+          ...ContactLink
+          ...ServiceList
         }
       }
     }

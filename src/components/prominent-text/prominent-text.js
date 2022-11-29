@@ -8,7 +8,7 @@ export default function ProminentText(props) {
       <div className='prominent-text'>
          <div className='text'>
             <h3>{props.kicker}</h3>
-            <h1>{props.text}</h1>
+            <p>{props.text}</p>
          </div>
       </div>
    )
@@ -22,6 +22,7 @@ export const query = graphql`
       }
    kicker
    text
+   locale
    id
  }
 `

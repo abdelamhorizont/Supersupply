@@ -12,3 +12,5 @@
 export { default as ProminentText } from "./prominent-text/prominent-text"
 export { default as HeroImage } from "./hero-image/hero-image"
 export { default as ProjectList } from "./projectlist/projectlist"
+export { default as ServiceList } from "./service-list/service-list"
+export { default as ContactLink } from "./contact-link/contact-link"

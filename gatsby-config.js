@@ -19,6 +19,15 @@ module.exports = {
         environment: process.env.DATOCMS_ENVIRONMENT,
       },
     },
+    {
+      resolve: `gatsby-plugin-i18n`,
+      options: {
+        langKeyDefault: 'en',
+        langKeyForNull: 'en',
+        prefixDefault: false,
+        useLangKeyLayout: false,
+      },
+    },
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",

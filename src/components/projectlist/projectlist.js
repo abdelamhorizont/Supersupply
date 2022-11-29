@@ -7,7 +7,7 @@ import "./projectlist.scss"
 import OurLocations from '../../pages/our-locations'
 
 export default function ProjectList(props) {
-   const projects = props.linkProject ? props.linkProject.links : props.data.nodes
+   const projects = props.linkProject ? props.linkProject.links : props.data
 
    return (
       <div className='projectlist'>
@@ -41,7 +41,7 @@ export const query = graphql`
     }
    id
    listTitle
-    linkProject {
+   linkProject {
       links {
         id
         title
@@ -52,6 +52,6 @@ export const query = graphql`
           value
         }
       }
-    }
+   }
  }
 `

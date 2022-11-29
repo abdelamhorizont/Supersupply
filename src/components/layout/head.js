@@ -9,7 +9,7 @@ export default function Head({ title, description, image }) {
       }}
     >
       <meta charSet="utf-8" />
-      <title>{title}</title>
+      <title>{title && title}</title>
       {description && (
         <meta
           name="description"

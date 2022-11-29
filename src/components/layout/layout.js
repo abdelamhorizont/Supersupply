@@ -5,42 +5,10 @@ import Div100vh from 'react-div-100vh'
 
 import { Menu, X } from "react-feather"
 import Head from "./head"
-// import SocialLinks from "./socialLinks"
-
+import LanguageSelector from "../LanguageSelector/languageSelector"
 import "./layout.scss"
 
-const Layout = (props) => {
-  const data = useStaticQuery(graphql`
-  query {
-    layout {
-      header {
-        id
-        navItems {
-          id
-          navItemType
-          ... on NavItem {
-            href
-            text
-          }
-          ... on NavItemGroup {
-            name
-            navItems {
-              id
-              href
-              text
-              description
-              icon {
-                alt
-                gatsbyImageData
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`)
-
+const Layout = ({title, description, image, language, children, location, passLang}) => {
   const [mobile, setMobile] = useState(false)
   const [isOpen, setOpen] = useState(false)
   const [navHeight, setNavHeight] = useState(0)
@@ -55,6 +23,14 @@ const Layout = (props) => {
     mobile ? setNavHeight(ref.current.clientHeight) : setNavHeight(ref.current.clientHeight)
   })
 
+  const [lang, setLang] = useState(language ? language : 'en')
+
+  const handleLang = (lang) => {
+    setLang(lang)
+    passLang(lang)
+  }
+
+
   const isOpenStyle = {
     transform: isOpen ? "translateY(0px)" : "translateY(-200px)",
     transition: isOpen ? "transform 0.5s, visibiliy 0.1s 0.5s" : "visibiliy 0.1s, transform 0.5s"
@@ -62,7 +38,8 @@ const Layout = (props) => {
 
   return (
     <>
-      <Head {...props} />
+      <Head />
+      {/* <Head {...props} /> */}
 
       {mobile ?
         <>
@@ -70,9 +47,10 @@ const Layout = (props) => {
             <nav>
               <div>
                 <div className="mobile-menu">
-                  <li id="logo" key="SUPERSUPPLY"><Link to="/">SUPERSUPPLY</Link></li>
+                  <li id="logo" key="SUPERSUPPLY"><Link  state={{lang}} to="/">SUPERSUPPLY</Link></li>
                   <div className="menu-buttons">
-                    <div className="lang"> <button>De</button> / <button>En</button></div>
+                  <LanguageSelector language={language} handleLang={handleLang} />
+                    {/* <div className="lang"> <button>De</button> / <button>En</button></div> */}
                     <li key="openButton" style={{ display: !isOpen ? "inline" : "none" }} onClick={() => setOpen(true)}><Menu /></li>
                     <li key="closeButton" style={{ display: isOpen ? "inline" : "none" }} onClick={() => setOpen(false)}><X /></li>
                   </div>
@@ -80,18 +58,18 @@ const Layout = (props) => {
 
                 <div ref={ref} className="mobile-menu-content" style={isOpenStyle}>
                   <div>
-                    <li key='projects'><Link to="/projects">Projects</Link></li>
-                    <li key='services'><Link to="/services">Services</Link></li>
-                    <li key="Our Locations"><Link to="/our-locations">Our Locations</Link></li>
+                    <li key='projects'><Link state={{lang}} to="/projects">Projects</Link></li>
+                    <li key='services'><Link state={{lang}} to="/services">Services</Link></li>
+                    <li key="Our Locations"><Link state={{lang}} to="/our-locations">Our Locations</Link></li>
                   </div>
                   <div>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to="/jobs">Jobs</Link></li>
+                    <li><Link state={{lang}} to="/about">About</Link></li>
+                    <li><Link state={{lang}} to="/contact">Contact</Link></li>
+                    <li><Link state={{lang}} to="/jobs">Jobs</Link></li>
                   </div>
                   <div>
-                    <li><Link to="/imprint">Imprint</Link></li>
-                    <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                    <li><Link state={{lang}} to="/imprint">Imprint</Link></li>
+                    <li><Link state={{lang}} to="/privacy-policy">Privacy Policy</Link></li>
                   </div>
                 </div>
               </div>
@@ -100,7 +78,7 @@ const Layout = (props) => {
 
           <div style={{ marginTop: - navHeight }}></div>
 
-          {props.children}
+          {children}
 
         </>
         :
@@ -109,18 +87,19 @@ const Layout = (props) => {
             <nav>
               <div ref={ref} className="menu-top">
                 <div>
-                  <li id="logo" key="SUPERSUPPLY"><Link to="/">SUPERSUPPLY</Link></li>
+                  <li id="logo" key="SUPERSUPPLY"><Link state={{lang}} to="/">SUPERSUPPLY</Link></li>
                 </div>
 
                 <div className="nav-middle-block">
-                  <li key="Our Locations"><Link to="/our-locations">Our Locations</Link></li>
-                  <li><Link to="/projects">Projects</Link></li>
-                  <li><Link to="/services">Services</Link></li>
+                  <li key="Our Locations"><Link state={{lang}} to="/our-locations">Our Locations</Link></li>
+                  <li><Link state={{lang}} to="/projects">Projects</Link></li>
+                  <li><Link state={{lang}} to="/services">Services</Link></li>
                 </div>
 
                 <div>
-                  <li><Link to="/about">About</Link></li>
-                  <div className="lang"> <button>De</button> / <button>En</button></div>
+                  <li><Link state={{lang}} to="/about">About</Link></li>
+                  <LanguageSelector language={language} handleLang={handleLang} />
+                  {/* <div className="lang"> <button>De</button> / <button>En</button></div> */}
                 </div>
 
               </div>
@@ -128,20 +107,20 @@ const Layout = (props) => {
           </header>
           <div style={{ height: navHeight }}></div>
 
-          {props.children}
+          {children}
 
           <div style={{ height: navHeight }}></div>
           <footer>
             <nav>
               <div className="menu-bottom">
                 <div>
-                  <li><Link to="/contact">Contact</Link></li>
-                  <li><Link to="/jobs">Jobs</Link></li>
+                  <li><Link state={{lang}} to="/contact">Contact</Link></li>
+                  <li><Link state={{lang}} to="/jobs">Jobs</Link></li>
                 </div>
                 <div></div>
                 <div>
-                  <li><Link to="/imprint">Imprint</Link></li>
-                  <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                  <li><Link state={{lang}} to="/imprint">Imprint</Link></li>
+                  <li><Link state={{lang}} to="/privacy-policy">Privacy Policy</Link></li>
                 </div>
               </div>
               {/* <div>

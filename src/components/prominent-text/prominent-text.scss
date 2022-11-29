@@ -10,13 +10,13 @@
    align-items    : center;
 
    background-color: white;
-   border-bottom: 1px solid black;
+   border-top: 1px solid black;
 
    .text {
       max-width : 70vw;
       text-align: center;
 
-      h1 {
+      p {
          font-size  : $fontsize-mid;
          line-height: calc($fontsize-mid * 1.5);
          white-space: pre-line;

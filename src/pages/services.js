@@ -9,15 +9,21 @@ import ListEl from "../components/list-el/list-el"
 import "../components/project/project.scss"
 
 
-export default function Services(props) {
-  const { services, generalText } = props.data.allDatoCmsService.nodes[0]
+export default function Services({data, location}) {
+  const [lang, setLang] = useState(location.state.lang || 'en')
+
+  const passLang = (lang) => {
+    setLang(lang)
+  }
+  
+  const { services, generalText } = data.allDatoCmsService.nodes.filter(node =>  node.locale == lang)[0]
 
   return (
-    <Layout>
+    <Layout language={lang} passLang={passLang}>
       {
-        services.map((service, i) => {
+        services.map((service) => {
           return (
-            <ListEl el={service} generalText={generalText} />
+            <ListEl el={service} />
           )
         })
       }
@@ -31,8 +37,9 @@ export default function Services(props) {
 
 export const query = graphql`
   {
-    allDatoCmsService(filter: {locale: {eq: "en"}}) {
+    allDatoCmsService {
       nodes {
+        locale
         generalText {
           kicker
           text
