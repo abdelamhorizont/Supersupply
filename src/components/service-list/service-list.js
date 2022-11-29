@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Project from '../project/project'
 import ListEl from "../list-el/list-el"
 
-import "./projectlist.scss"
+import "../projectlist/projectlist.scss"
 import OurLocations from '../../pages/our-locations'
 
 export default function ServicetList(props) {
