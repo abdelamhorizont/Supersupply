@@ -6,7 +6,7 @@ import Layout from "../components/layout/layout"
 import Projectlist from "../components/projectlist/projectlist"
 
 export default function Projects({data, location}) {
-  const [lang, setLang] = useState(location.state.lang || 'en')
+  const [lang, setLang] = useState(location.state?.lang || 'en')
 
   const passLang = (lang) => {
     setLang(lang)

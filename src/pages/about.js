@@ -16,7 +16,7 @@ export default function About({data, location}) {
   // const { aboutPage } = data
   // console.log(location.state.lang)
 
-  const [lang, setLang] = useState(location.state.lang || 'en')
+  const [lang, setLang] = useState(location.state?.lang || 'en')
 
   const passLang = (lang) => {
     setLang(lang)

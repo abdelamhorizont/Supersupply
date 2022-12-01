@@ -17,7 +17,7 @@ export default function Homepage({data, location}) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  const [lang, setLang] = useState(location.state.lang || 'en')
+  const [lang, setLang] = useState(location.state?.lang || 'en')
 
   const passLang = (lang) => {
     setLang(lang)

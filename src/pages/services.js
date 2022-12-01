@@ -10,7 +10,7 @@ import "../components/project/project.scss"
 
 
 export default function Services({data, location}) {
-  const [lang, setLang] = useState(location.state.lang || 'en')
+  const [lang, setLang] = useState(location.state?.lang || 'en')
 
   const passLang = (lang) => {
     setLang(lang)

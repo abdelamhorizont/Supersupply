@@ -6,7 +6,7 @@ import * as sections from "../components/sections"
 import Fallback from "../components/fallback"
 
 export default function Contact({data, location}) {
-  const [lang, setLang] = useState(location.state.lang || 'en')
+  const [lang, setLang] = useState(location.state?.lang || 'en')
 
   const passLang = (lang) => {
     setLang(lang)
