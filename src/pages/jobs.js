@@ -20,6 +20,7 @@ export default function Jobs({data, location}) {
 
    return (
       <Layout language={lang} passLang={passLang}>
+         <div className="jobs">
          {
             jobEntries.map(job => {
                return (
@@ -31,6 +32,7 @@ export default function Jobs({data, location}) {
          {generalText[0] &&
             <ProminentText kicker={generalText[0].kicker} text={generalText[0].text} />
          }
+         </div>
       </Layout>
    )
 }

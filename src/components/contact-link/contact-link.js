@@ -8,8 +8,8 @@ export default function ContactLink(props) {
 
   return (
     <div className='projectlist'>
-      <h1>{props.listTitle}</h1>
-      <ProminentText text={contact} />
+      {/* <h1>{props.listTitle}</h1> */}
+      <ProminentText text={contact} kicker={props.listTitle} />
     </div>
   )
 }

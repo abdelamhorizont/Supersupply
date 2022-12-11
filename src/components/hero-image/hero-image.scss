@@ -1,14 +1,62 @@
 @import "../../styles/global.scss";
 
+.swiper-buttons{
+   position: absolute;
+   bottom: 0vh;
+   display: inline-flex;
+   z-index: 1000;
+   width: 100%;
+   height: 100%;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+   display: flex;
+   width: 50%;
+   
+}
+
+.swiper-button-prev{
+   cursor: url('arrow-left.svg'), auto;	
+}
+
+.swiper-button-next{
+   cursor: url('arrow-right.svg'), auto;	
+   transform-origin: center;
+}
+
+.hero{
+   border-bottom   : 1px solid black;
+}
+
+
 @media (max-width: $breakpoint-tablet) {
-   .hero-image {
-      height: 80vh;
+   .hero{
       z-index: -1;
+   }
+
+   .hero-image {
+      height : 60vh;
+   }
+
+   .swiper-buttons{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: calc(100vw - 1rem);
+      padding: 0.5rem;
+
+      .swiper-button-prev,
+      .swiper-button-next {
+         width: auto;
+         color: white;
+         display: inline;
+      }   
    }
 }
 
 @media (min-width: $breakpoint-tablet) {
    .hero-image {
-      height: 90vh;
+      height: 75vh;
    }
 }

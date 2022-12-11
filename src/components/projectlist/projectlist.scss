@@ -15,7 +15,7 @@
 
 .projectlist {
    background-color: white;
-   border-bottom: 1px solid black;
+   // border-bottom: 1px solid black;
 
    h1 {
       display        : flex;
@@ -33,6 +33,11 @@
       font-size      : $fontsize;
    }
 }
+
+.more-link {
+   border-bottom: 1px solid black;
+}    
+
 
 @media (min-width: $breakpoint-tablet) {
    .projectgrid {

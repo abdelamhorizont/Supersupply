@@ -1,22 +1,41 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, A11y } from 'swiper';
+import { ArrowLeft, ArrowRight } from "react-feather"
 
 import "./hero-image.scss"
 import 'swiper/css'
-import 'swiper/scss/navigation';
+// import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 
 export default function HeroImage(props) {
    const images = props.images
 
+   const navigationPrevRef = React.useRef(null)
+   const navigationNextRef = React.useRef(null)
+   const [mobile, setMobile] = useState(false)
+
+   useEffect(() => {
+      const isBrowser = () => typeof window !== `undefined`
+      setMobile(isBrowser() && window.screen.width < 768)
+      window.addEventListener('resize', setMobile(isBrowser() && window.screen.width < 768))
+   }, [])
+   
+
    return (
       <div className='hero'>
          <Swiper
             modules={[Navigation, Pagination, A11y]}
-            navigation
+            navigation={{
+               nextEl: navigationNextRef.current,
+               prevEl: navigationPrevRef.current
+            }}
+            onBeforeInit={(swiper) => {
+               swiper.params.navigation.nextEl = navigationNextRef.current;
+               swiper.params.navigation.prevEl = navigationPrevRef.current;
+            }}
             loop={true}
             pagination={{ clickable: true }}
             spaceBetween={0}
@@ -24,7 +43,7 @@ export default function HeroImage(props) {
             style={{
                "--swiper-pagination-color": "#fff",
                "--swiper-navigation-color": "#fff",
-             }}
+            }}
          >
             {
                images.map((img) => {
@@ -39,6 +58,10 @@ export default function HeroImage(props) {
                   )
                })
             }
+            <div className="swiper-buttons">
+               <div ref={navigationPrevRef} className="swiper-button-prev"> {mobile && <ArrowLeft />} </div>
+               <div ref={navigationNextRef} className="swiper-button-next"> {mobile && <ArrowRight />} </div>
+            </div>
          </Swiper>
       </div>
    )

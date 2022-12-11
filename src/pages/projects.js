@@ -49,6 +49,17 @@ export const query = graphql`
         images {
           gatsbyImageData(layout: FULL_WIDTH)
         }
+        adress {
+          title
+          link
+        }
+        serviceTags {
+          serviceTitle
+        }
+        website {
+          title
+          link
+        }
       }
     }
   }

@@ -1,8 +1,8 @@
 @import "../../styles/global.scss";
 
 .prominent-text {
-   width : 100vw;
-   padding: 10vh 0vw;
+   width    : 100vw;
+   padding  : 15vh 0vw;
    // height: 90vh;
 
    display        : flex;
@@ -10,10 +10,10 @@
    align-items    : center;
 
    background-color: white;
-   border-bottom: 1px solid black;
+   border-bottom   : 1px solid black;
 
    .text {
-      max-width : 70vw;
+      max-width : 50vw;
       text-align: center;
 
       p {
@@ -30,12 +30,19 @@
    }
 }
 
+.services,
+.contact {
+   .prominent-text {
+      border-bottom: 0px solid black;
+   }
+}
+
+
 @media (max-width: $breakpoint-tablet) {
 
    .prominent-text {
-   
       .text {
-         max-width : 92vw;
+         max-width: 92vw;
       }
    }
 }

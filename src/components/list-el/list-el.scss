@@ -4,15 +4,41 @@
    .list-el {
       border-right : 0px solid black;
    }
+
+   .jobs{
+      .list-el{
+         .job-content{
+            display: block;
+   
+            p{
+               border-right: 0px solid black;
+            }
+         }
+      }
+   }
 }
 
 @media (min-width: $breakpoint-tablet) {
    .list-el {   
       border-right : 0px solid black;
    }
+
+   .jobs{
+      .list-el{
+         .job-content{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+   
+            p{
+               border-right: 1px solid black;
+            }
+         }
+      }
+   }
 }
 
 .list-el {
+   border-bottom: 1px solid black;
 
    h2 {
       display        : flex;
@@ -23,15 +49,33 @@
       background-color   : white;
       border-bottom: 1px solid black;
 
-      // background-color: whitesmoke;
+      transition: border-bottom 0.5s ease;
    }
 
+   h2:last-child{
+      border-bottom: 0px solid black;
+   }
+
+   h2:hover{
+      cursor: pointer;
+   }
+
+   .h2-visible{
+      border-bottom: 1px solid black;
+
+   }
+   .h2-hidden{
+      border-bottom: 0px solid black;
+   }
+
+   
+.job-content{
    .hidden {
       max-height: 0vh;
       visibility: hidden;
       z-index   : 0;
 
-      transition: max-height 0.5s, visibility 0.5s ease;
+      transition: max-height 0.5s, visibility 0.3s ease;
    }
 
    .visible {
@@ -40,8 +84,7 @@
       overflow  : scroll;
       z-index   : 0;
 
-      transition: max-height 0.5s, visibility 0.5s ease;
-
+      transition: max-height 0.5s, visibility 0.3s ease;
    }
 
    p {
@@ -52,15 +95,15 @@
       background-color   : white;
       // white-space: nowrap;     
       white-space: pre-line;
-      border-bottom: 1px solid black;
+      // border-bottom: 1px solid black;
 
    }
 
-   .left-box {
-      overflow    : hidden;
-      border-right: 1px solid black;
+   // .left-box {
+   //    overflow    : hidden;
+   //    border-right: 1px solid black;
 
-   }
+   // }
 
    .project-images {
       height  : 100%;
@@ -68,12 +111,21 @@
 
    }
 }
+}
+
+
+
+// .list-el:last-child {
+//    h2{
+//       border-bottom: 0px solid black;
+//    }
+// }
 
 .location {
-   display              : grid;
-   grid-template-columns: 1fr 2fr;
+   // display              : grid;
+   // grid-template-columns: 1fr 2fr;
 
-   height   : 60vh;
+   // height   : 60vh;
    // border: 1px solid black;
 
 }

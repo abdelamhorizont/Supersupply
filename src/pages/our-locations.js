@@ -5,27 +5,28 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Projectlist from "../components/projectlist/projectlist"
 
-export default function Projects({data, location}) {
+export default function Projects({ data, location }) {
   const [lang, setLang] = useState(location.state?.lang || 'en')
 
   const passLang = (lang) => {
     setLang(lang)
   }
 
-  const projects = data.allDatoCmsProject.nodes.filter(node =>  node.locale == lang)
+  const projects = data.allDatoCmsProject.nodes.filter(node => node.locale == lang)
 
   const [mobile, setMobile] = useState(false)
   React.useEffect(() => {
-     const isBrowser = () => typeof window !== `undefined`
-     window.addEventListener('resize', setMobile(isBrowser() && window.screen.width < 768))
+    const isBrowser = () => typeof window !== `undefined`
+    window.addEventListener('resize', setMobile(isBrowser() && window.screen.width < 768))
   }, [])
 
   return (
     <Layout language={lang} passLang={passLang}>
+
       {mobile &&
-      <div className="title-block">
-        <h1>Projects</h1>
-      </div>
+        <div className="title-block">
+          <h1>Our Locations</h1>
+        </div>
       }
 
       <Projectlist
@@ -48,6 +49,17 @@ export const query = graphql`
         }
         images {
           gatsbyImageData(layout: FULL_WIDTH)
+        }
+        adress {
+          title
+          link
+        }
+        serviceTags {
+          serviceTitle
+        }
+        website {
+          title
+          link
         }
       }
     }

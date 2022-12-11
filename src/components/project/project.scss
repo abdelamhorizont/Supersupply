@@ -5,91 +5,243 @@
       border-bottom: 0px solid black;
    }
 
+   .project {
+      border-bottom   : 0px solid black;
+      // border-right : 0px solid black;
+
+      .location {
+         display: block;
+         border-right: 0px solid black;
+
+      }
+
+      .project-content {
+         height : 50vh;
+         display: block;
+         border-right: 0px solid black;
+
+         .visible {
+            grid-column : 1/4;
+            border-right: 0px solid black;
+         }
+
+         .project-images {
+            grid-column: 1/4;
+         }
+      }
+   }
+}
+
+@media (min-width: $breakpoint-tablet) {
 
    .project {
-      border-bottom: 0px solid black;
-      border-right : 0px solid black;
+      border-bottom   : 0px solid black;
+      border-right : 1px solid black;
    }
 }
 
 
 .project {
-   border-bottom: 1px solid black;
-   border-right : 1px solid black;
+   border-bottom   : 1px solid black;
+   // border-right : 1px solid black;
 
-   overflow: hidden;
-   height   : 40vh;
+   overflow    : hidden;
+   // height   : 80vh;
 
-   h2 {
-      position: sticky;
+   .title-bar {
+      // position: sticky;
 
-      display        : flex;
-      justify-content: center;
-      z-index        : 1;
-      padding        : 1rem;
+      display                 : flex;
+      justify-content         : center;
+      // grid-template-columns: 1fr 1fr ;
+      z-index                 : 1;
+      padding                 : 1rem;
 
-      background-color   : white;
-      // background-color: whitesmoke;
-      border-bottom      : 1px solid black;
-
+      background-color: white;
+      border-bottom   : 1px solid black;
    }
 
-   .hidden {
-      max-height: 0vh;
-      visibility: hidden;
-      z-index   : 0;
 
-      transition: max-height 0.5s, visibility 0.5s ease;
+   .title-bar:last-child {
+      border-bottom: 0px solid black;
    }
 
-   .visible {
-      max-height: 50vh;
-      visibility: visible;
-      overflow  : scroll;
-      z-index   : 0;
-
-      transition: max-height 0.5s, visibility 0.5s ease;
+   .title-bar:hover {
+      cursor: pointer;
    }
 
-   p {
-      padding            : 1rem;
-      font-size          : $fontsize;
-      line-height        : calc($fontsize * 1.2);
-      // background-color: rgb(235, 233, 233);
-      background-color   : white;
-      // white-space: nowrap;
+   .project-info-group{
+      width: 100%;
 
+      .project-info{
+         display                 : flex;
+         justify-content         : flex-start;
+         padding                 : 1rem;
+   
+         background-color: white;
+         border-top   : 1px solid black;
+   
+         a {
+            padding: 0rem;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+         }
+
+         p{
+            padding: 0rem;
+         }
+      }
    }
 
-   .left-box {
-      overflow    : hidden;
-      // border-right: 1px solid black;
+   .project-content {
+      .hidden {
+         height    : 0vh;
+         visibility: hidden;
+         z-index   : 0;
 
+         transition: height 0.5s, visibility 0.5s ease;
+      }
+
+      .visible {
+         display: grid;
+         grid-template-rows: 1fr auto ;
+
+         // max-height: 50vh;
+         height    : 100%;
+         visibility: visible;
+         // overflow  : scroll;
+         z-index   : 0;
+
+         transition: max-height 0.5s, visibility 0.5s ease;
+         transition: height 0.5s, visibility 0.5s ease;
+
+         .project-text{
+            overflow  : scroll;
+         }
+      }
+
+      p {
+         padding            : 1rem;
+         font-size          : $fontsize;
+         line-height        : calc($fontsize * 1.2);
+         // background-color: rgb(235, 233, 233);
+         background-color   : white;
+         // white-space: nowrap;
+      }
+
+      .left-box {
+         overflow    : hidden;
+         border-right: 0px solid black;
+
+      }
+
+      .project-images {
+         height  : 100%;
+         overflow: hidden;
+      }
    }
 
-   .project-images {
-      height  : 100%;
-      overflow: hidden;
+}
 
-   }
+.project:last-child {
+   border-bottom: 0px solid black;
 }
 
 .location {
    display              : grid;
    grid-template-columns: 1fr 2fr;
 
-   height   : 60vh;
+   // height   : 80vh;
+   border-bottom: 0px solid black;
 
-   .left-box {
-      border-right: 1px solid black;
-   }
 
-   h2{
+   .title-bar {
+      width      : calc(100vw - 2rem);
       grid-column: 1/4;
-      position: sticky;
-      position: -webkit-sticky;
 
-      top: 20;
+      display        : flex;
+      justify-content: space-between;
 
+      a {
+         padding: 0rem;
+      }
+
+      h2{
+         margin-left: 1rem;
+      }
    }
+
+   .project-content {
+      height     : 70vh;
+      grid-column: 1/4;
+
+      display              : grid;
+      grid-template-columns: 1fr 2fr;
+
+      border-bottom: 1px solid black;
+      transition   : border-bottom 0.4s, height 0.4s, visibility 0.4s 0.4s ease;
+
+      .visible {
+         height      : 70vh;
+         border-right: 1px solid black;
+         transition  : height 0.5s, visibility 0.5s ease;
+
+      }
+
+      .left-box {
+         border-right: 1px solid black;
+         height      : 70vh;
+         transition  : height 0.5s, visibility 0.5s ease;
+
+      }
+
+      .project-images {
+         transition : height 0.5s, visibility 0.5s ease;
+         grid-column: 2/4;
+
+      }
+
+      .project-images img {
+         height  : 100%;
+         overflow: hidden;
+      }
+   }
+}
+
+.homepage {
+   .project {
+      height: 50vh;
+
+      .project-content {
+         height: 90%;
+   
+         .visible {
+            height    : 50vh;
+            overflow  : scroll;
+            transition: height 0.5s, visibility 0.5s ease;
+         }
+      }
+   }
+
+   .project-images img {
+      height  : 100%;
+      overflow: hidden;
+   }
+   .project-images {
+      height  : 100%;
+      overflow: hidden;
+   }
+}
+
+.hidden-project {
+   height    : 0vh;
+   visibility: hidden;
+
+   transition   : border-bottom 0.4s, height 0.4s, visibility 0.4s 0.4s ease;
+   border-bottom: 0px solid black;
+
+   * {
+      visibility: hidden;
+   }
+
 }

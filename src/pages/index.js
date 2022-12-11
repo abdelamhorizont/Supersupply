@@ -27,6 +27,7 @@ export default function Homepage({data, location}) {
 
   return (
     <Layout language={lang} passLang={passLang} {...homepage}>
+      <div className="homepage">
       {homepage.blocks.map((block) => { 
         const { ...componentProps } = block
         let blockType = _.camelCase(block?.model?.apiKey)
@@ -35,6 +36,7 @@ export default function Homepage({data, location}) {
         const Component = sections[blockType] || Fallback
         return <Component key={block?.id} {...componentProps} />
       })}
+      </div>
     </Layout>
   )
 }

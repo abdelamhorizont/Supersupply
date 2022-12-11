@@ -8,29 +8,30 @@ import ListEl from "../components/list-el/list-el"
 
 import "../components/project/project.scss"
 
-
-export default function Services({data, location}) {
+export default function Services({ data, location }) {
   const [lang, setLang] = useState(location.state?.lang || 'en')
 
   const passLang = (lang) => {
     setLang(lang)
   }
-  
-  const { services, generalText } = data.allDatoCmsService.nodes.filter(node =>  node.locale == lang)[0]
+
+  const { services, generalText } = data.allDatoCmsService.nodes.filter(node => node.locale == lang)[0]
 
   return (
     <Layout language={lang} passLang={passLang}>
-      {
-        services.map((service) => {
-          return (
-            <ListEl el={service} />
-          )
-        })
-      }
+      <div className="services">
+        {
+          services.map((service) => {
+            return (
+              <ListEl el={service} />
+            )
+          })
+        }
 
-      {generalText[0] &&
-        <ProminentText kicker={generalText[0].kicker} text={generalText[0].text}/>
-      }
+        {generalText[0] &&
+          <ProminentText kicker={generalText[0].kicker} text={generalText[0].text} />
+        }
+      </div>
     </Layout>
   )
 }

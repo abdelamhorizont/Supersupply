@@ -7,6 +7,7 @@ import { Menu, X } from "react-feather"
 import Head from "./head"
 import LanguageSelector from "../LanguageSelector/languageSelector"
 import "./layout.scss"
+import Logo from "./logo1.svg"
 
 const Layout = ({title, description, image, language, children, location, passLang}) => {
   const [mobile, setMobile] = useState(false)
@@ -21,7 +22,7 @@ const Layout = ({title, description, image, language, children, location, passLa
 
   useEffect(() => {
     mobile ? setNavHeight(ref.current.clientHeight) : setNavHeight(ref.current.clientHeight)
-  })
+  },[])
 
   const [lang, setLang] = useState(language ? language : 'en')
 
@@ -32,8 +33,10 @@ const Layout = ({title, description, image, language, children, location, passLa
 
 
   const isOpenStyle = {
-    transform: isOpen ? "translateY(0px)" : "translateY(-200px)",
-    transition: isOpen ? "transform 0.5s, visibiliy 0.1s 0.5s" : "visibiliy 0.1s, transform 0.5s"
+    // transform: isOpen ? "translateY(0px)" : "translateY(-200px)",
+    marginTop: isOpen ? "0px" : "-200px",
+    transition: isOpen ? "margin-top 0.5s, visibiliy 0.1s 0.5s" : "visibiliy 0.1s, margin-top 0.5s",
+    borderBottom: isOpen ? "1px solid black" : "0px solid black"
   }
 
   return (
@@ -45,14 +48,14 @@ const Layout = ({title, description, image, language, children, location, passLa
         <>
           <header>
             <nav>
-              <div>
-                <div className="mobile-menu">
-                  <li id="logo" key="SUPERSUPPLY"><Link  state={{lang}} to="/">SUPERSUPPLY</Link></li>
+              <div className="menu">
+                <div ref={ref} className="mobile-menu">
+                  <li id="logo" key="SUPERSUPPLY"><Link  state={{lang}} to="/"><img src={Logo} alt="" /></Link></li>
                   <div className="menu-buttons">
                   <LanguageSelector language={language} handleLang={handleLang} />
                     {/* <div className="lang"> <button>De</button> / <button>En</button></div> */}
-                    <li key="openButton" style={{ display: !isOpen ? "inline" : "none" }} onClick={() => setOpen(true)}><Menu /></li>
-                    <li key="closeButton" style={{ display: isOpen ? "inline" : "none" }} onClick={() => setOpen(false)}><X /></li>
+                    <li key="openButton" className="menuButton" style={{ display: !isOpen ? "inline" : "none" }} onClick={() => setOpen(true)}><Menu /></li>
+                    <li key="closeButton"  className="menuButton" style={{ display: isOpen ? "inline" : "none" }} onClick={() => setOpen(false)}><X /></li>
                   </div>
                 </div>
 
@@ -76,7 +79,8 @@ const Layout = ({title, description, image, language, children, location, passLa
             </nav>
           </header>
 
-          <div style={{ marginTop: - navHeight }}></div>
+          {/* <div style={{ marginTop: navHeight }}></div> */}
+          <div style={{ marginTop: "60px" }}></div>
 
           {children}
 
@@ -87,7 +91,7 @@ const Layout = ({title, description, image, language, children, location, passLa
             <nav>
               <div ref={ref} className="menu-top">
                 <div>
-                  <li id="logo" key="SUPERSUPPLY"><Link state={{lang}} to="/">SUPERSUPPLY</Link></li>
+                  <li id="logo" key="SUPERSUPPLY"><Link state={{lang}} to="/"><img src={Logo} alt="" /></Link></li>
                 </div>
 
                 <div className="nav-middle-block">

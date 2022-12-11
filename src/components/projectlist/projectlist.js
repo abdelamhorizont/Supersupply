@@ -51,6 +51,17 @@ export const query = graphql`
         text {
           value
         }
+        adress {
+         title
+         link
+        }
+        serviceTags {
+         serviceTitle
+        }
+        website {
+         title
+         link
+        }
       }
    }
  }

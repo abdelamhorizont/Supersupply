@@ -1,11 +1,29 @@
 @font-face {
    font-family: "ABCWhyte";
-   // src        : url('src/styles/fonts/ABCWhyte-Light-Trial.woff');
    src        : url('./fonts/ABCWhyte-Light-Trial.woff');
+
+}
+
+@font-face {
+   font-family: "ABCWhyte-Italic";
+   src        : url('./fonts/ABCWhyte-LightItalic-Trial.woff');
 }
 
 body{
    font-family: 'ABCWhyte';
+
+   li:hover{
+      font-family: "ABCWhyte-Italic";
+   }
+
+   button:hover{
+      font-family: "ABCWhyte-Italic";
+   }
+
+   h2:hover{
+      font-family: "ABCWhyte-Italic";
+   }
+
 }
 
 
