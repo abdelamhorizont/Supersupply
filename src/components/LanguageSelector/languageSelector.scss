@@ -1,4 +1,7 @@
 .active-lang{
-   text-decoration: underline;
+   text-decoration-line: underline;
    text-underline-offset: 4px;
+   
+   -webkit-text-decoration-line: underline;
+   -webkit-text-underline-offset: 4px;
 }
