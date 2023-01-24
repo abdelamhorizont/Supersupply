@@ -11,7 +11,6 @@ export default function ListEl(props) {
 
   const [visible, setvisible] = useState(false)
   const [mobile, setMobile] = useState(false)
-  console.log(visible);
 
   React.useEffect(() => {
     const isBrowser = () => typeof window !== `undefined`

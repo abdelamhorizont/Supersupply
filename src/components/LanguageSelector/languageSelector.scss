@@ -1,7 +1,9 @@
-.active-lang{
-   text-decoration-line: underline;
-   text-underline-offset: 4px;
+button.active-lang{
+   // text-decoration-line: underline; 
+   // text-underline-offset: 4px;
    
-   -webkit-text-decoration-line: underline;
-   -webkit-text-underline-offset: 4px;
+   // -webkit-text-decoration-line: underline; /* Safari */
+   // -webkit-text-underline-offset: 4px;
+   font-family: "ABCWhyte-Italic";
+
 }

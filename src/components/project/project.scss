@@ -7,7 +7,6 @@
 
    .project {
       border-bottom   : 0px solid black;
-      // border-right : 0px solid black;
 
       .location {
          display: block;
@@ -43,17 +42,11 @@
 
 .project {
    border-bottom   : 1px solid black;
-   // border-right : 1px solid black;
-
    overflow    : hidden;
-   // height   : 80vh;
 
    .title-bar {
-      // position: sticky;
-
       display                 : flex;
       justify-content         : center;
-      // grid-template-columns: 1fr 1fr ;
       z-index                 : 1;
       padding                 : 1rem;
 
@@ -106,10 +99,8 @@
          display: grid;
          grid-template-rows: 1fr auto ;
 
-         // max-height: 50vh;
          height    : 100%;
          visibility: visible;
-         // overflow  : scroll;
          z-index   : 0;
 
          transition: max-height 0.5s, visibility 0.5s ease;
@@ -118,21 +109,25 @@
          .project-text{
             overflow  : scroll;
          }
+
+         .project-text::-webkit-scrollbar {
+            // -webkit-appearance: none;
+            display: none;
+            width: 0;
+            height: 0;
+        }
       }
 
       p {
          padding            : 1rem;
          font-size          : $fontsize;
          line-height        : calc($fontsize * 1.2);
-         // background-color: rgb(235, 233, 233);
          background-color   : white;
-         // white-space: nowrap;
       }
 
       .left-box {
          overflow    : hidden;
          border-right: 0px solid black;
-
       }
 
       .project-images {
@@ -150,8 +145,6 @@
 .location {
    display              : grid;
    grid-template-columns: 1fr 2fr;
-
-   // height   : 80vh;
    border-bottom: 0px solid black;
 
 
@@ -166,9 +159,6 @@
          padding: 0rem;
       }
 
-      h2{
-         // margin-left: 1rem;
-      }
    }
 
    .project-content {

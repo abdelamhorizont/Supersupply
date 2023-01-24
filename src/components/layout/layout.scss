@@ -3,9 +3,6 @@
 
 @media (max-width: $breakpoint-tablet) {
    nav {
-      // border-bottom: 1px solid black;
-      // position: fixed;
-      // z-index: 3;
 
       .menu {
          display : block;
@@ -61,7 +58,6 @@
 
                   &:hover{
                      cursor: pointer;
-
                   }
                }
             }
@@ -71,7 +67,6 @@
          .mobile-menu-content {
             display  : block;
             z-index  : 1;
-            // transform: translateY(-200px);
             margin-top: -200px;
 
             background-color: white;

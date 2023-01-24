@@ -15,9 +15,8 @@ import "./project.scss"
 
 export default function Project(props) {
    const project = props.data
-
    const [mobile, setMobile] = useState(false)
-
+   
    useEffect(() => {
       const isBrowser = () => typeof window !== `undefined`
       setMobile(isBrowser() && window.screen.width < 768)
@@ -103,7 +102,7 @@ export default function Project(props) {
                      "overflow": "hidden"
                   }}
                >
-                  {
+                  {project.images.length > 0 ?
                      project.images.map((img) => {
                         return (
                            <SwiperSlide>
@@ -116,11 +115,20 @@ export default function Project(props) {
                            </SwiperSlide>
                         )
                      })
+                     :
+                     <GatsbyImage
+                        // className='hero-image'
+                        style={{ height: '100%' }}
+                        // alt={project.images[0].alt || project.images[0].title || project.images[0].filename}
+                        image={getImage(project.images[0]?.gatsbyImageData)}
+                     />
                   }
-                  <div className="swiper-buttons">
-                     <div ref={navigationPrevRef} className="swiper-button-prev"> {mobile && <ArrowLeft />} </div>
-                     <div ref={navigationNextRef} className="swiper-button-next"> {mobile && <ArrowRight />} </div>
-                  </div>
+                  {project.images.length > 1 &&
+                     <div className="swiper-buttons">
+                        <div ref={navigationPrevRef} className="swiper-button-prev"> {mobile && <ArrowLeft />} </div>
+                        <div ref={navigationNextRef} className="swiper-button-next"> {mobile && <ArrowRight />} </div>
+                     </div>
+                  }
                </Swiper>
             </div>
          </div>
