@@ -12,3 +12,23 @@ $fontsize: 1rem;
 // $fontsize: 18px;
 $fontsize-mid: 1.3rem;
 $fontsize-big: 1.8rem;
+
+.contact{
+   background-color: white;
+   padding  : 0vh 0vw 0vh 0vw;
+
+   .text{
+      // max-width: 92vw;
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+      
+      p {
+         font-size  : $fontsize-mid;
+         line-height: calc($fontsize-mid * 1.5);
+         white-space: pre-line;
+   
+      }
+   }
+
+}

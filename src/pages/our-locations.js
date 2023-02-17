@@ -12,7 +12,7 @@ export default function Projects({ data, location }) {
     setLang(lang)
   }
 
-  const projects = data.allDatoCmsProject.nodes.filter(node => node.locale == lang)
+  const projects = data.allDatoCmsOurLocation.nodes.filter(node => node.locale == lang)
 
   const [mobile, setMobile] = useState(false)
   React.useEffect(() => {
@@ -40,7 +40,7 @@ export default function Projects({ data, location }) {
 
 export const query = graphql`
   {
-    allDatoCmsProject(filter: {location: {eq: true}}) {
+    allDatoCmsOurLocation {
       nodes {
         title
         locale
@@ -61,6 +61,7 @@ export const query = graphql`
           title
           link
         }
+        instagramLink
       }
     }
   }

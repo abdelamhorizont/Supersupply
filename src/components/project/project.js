@@ -5,7 +5,7 @@ import { graphql, useStaticQuery, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, A11y } from 'swiper';
-import { ArrowLeft, ArrowRight } from "react-feather"
+import { ArrowLeft, ArrowRight, Instagram } from "react-feather"
 
 import "../hero-image/hero-image.scss"
 import 'swiper/css'
@@ -16,7 +16,7 @@ import "./project.scss"
 export default function Project(props) {
    const project = props.data
    const [mobile, setMobile] = useState(false)
-   
+
    useEffect(() => {
       const isBrowser = () => typeof window !== `undefined`
       setMobile(isBrowser() && window.screen.width < 768)
@@ -30,7 +30,7 @@ export default function Project(props) {
       return () => clearTimeout(timer);
    }, [])
 
-   const [visible, setvisible] = useState(!mobile && props.OurLocations)
+   const [visible, setvisible] = useState(!mobile && props.OurLocations && !props.collapsed)
    // console.log(mobile);
 
    const navigationPrevRef = React.useRef(null)
@@ -64,9 +64,16 @@ export default function Project(props) {
                      </div>
                   }
 
-                  {project.adress[0] &&
-                     <div className='project-info'> <a target="_blank" href={project.website[0]?.link}>{project.website[0]?.title}</a></div>
-                  }
+                  <div className='project-info'>
+                     {project.adress[0] &&
+                        <div> <a target="_blank" href={project.website[0]?.link}>{project.website[0]?.title}</a></div>
+                     }
+                     {project.instagramLink &&
+                        <div> <a target="_blank" href={project.instagramLink}>
+                           <Instagram className='insta' /></a>
+                        </div>
+                     }
+                  </div>
 
                   {project.serviceTags[0] &&
                      <div className='project-info'>

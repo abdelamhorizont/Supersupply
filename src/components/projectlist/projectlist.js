@@ -18,7 +18,7 @@ export default function ProjectList(props) {
             {
                projects.map((project) => {
                   return (
-                     <Project OurLocations={props.OurLocations} data={project} />
+                     <Project OurLocations={props.OurLocations} data={project} collapsed={props.collapsed} />
                   )
                })
             }

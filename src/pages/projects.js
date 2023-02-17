@@ -29,6 +29,7 @@ export default function Projects({data, location}) {
       }
 
       <Projectlist
+        collapsed={false}
         OurLocations={true}
         data={projects}
       />
@@ -60,6 +61,7 @@ export const query = graphql`
           title
           link
         }
+        instagramLink
       }
     }
   }

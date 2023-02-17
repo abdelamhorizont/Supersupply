@@ -13,11 +13,15 @@ export default function Contact({ data, location }) {
   }
 
   const contact = data.allDatoCmsContact.nodes.filter(node => node.locale == lang)[0].contact
+  const mail = data.allDatoCmsContact.nodes.filter(node => node.locale == lang)[0].mailAdress
 
   return (
     <Layout language={lang} passLang={passLang}>
       <div className="contact">
         <sections.ProminentText text={contact} />
+        <div className="text">
+        <a href={"mailTo:" + mail}><p>{mail}</p></a>
+        </div>
       </div>
     </Layout>
   )
@@ -27,6 +31,7 @@ export const query = graphql`
   {
     allDatoCmsContact {
       nodes {
+        mailAdress
         contact
         locale
       }
