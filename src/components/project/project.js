@@ -64,16 +64,18 @@ export default function Project(props) {
                      </div>
                   }
 
-                  <div className='project-info'>
-                     {project.adress[0] &&
-                        <div> <a target="_blank" href={project.website[0]?.link}>{project.website[0]?.title}</a></div>
-                     }
-                     {project.instagramLink &&
-                        <div> <a target="_blank" href={project.instagramLink}>
-                           <Instagram className='insta' /></a>
-                        </div>
-                     }
-                  </div>
+                  {(project.adress[0] || project.instagramLink) &&
+                     <div className='project-info'>
+                        {project.adress[0] &&
+                           <div> <a target="_blank" href={project.website[0]?.link}>{project.website[0]?.title}</a></div>
+                        }
+                        {project.instagramLink &&
+                           <div> <a target="_blank" href={project.instagramLink}>
+                              <Instagram className='insta' /></a>
+                           </div>
+                        }
+                     </div>
+                  }
 
                   {project.serviceTags[0] &&
                      <div className='project-info'>

@@ -20,7 +20,7 @@ export default function Contact({ data, location }) {
       <div className="contact">
         <sections.ProminentText text={contact} />
         <div className="text">
-        <a href={"mailTo:" + mail}><p>{mail}</p></a>
+          <a href={"mailTo:" + mail}><p>{mail}</p></a>
         </div>
       </div>
     </Layout>
