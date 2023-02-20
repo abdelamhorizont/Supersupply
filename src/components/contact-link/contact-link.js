@@ -9,8 +9,7 @@ export default function ContactLink(props) {
 
   return (
     <div className='projectlist'>
-      {/* <h1>{props.listTitle}</h1> */}
-      <ProminentText text={contact} kicker={props.listTitle} />
+      <ProminentText text={mail} kicker={props.listTitle} />
       <div className="text">
         <a href={"mailTo:" + mail}><p>{mail}</p></a>
       </div>
