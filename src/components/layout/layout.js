@@ -34,7 +34,7 @@ const Layout = ({title, description, image, language, children, location, passLa
 
   const isOpenStyle = {
     // transform: isOpen ? "translateY(0px)" : "translateY(-200px)",
-    marginTop: isOpen ? "0px" : "-220px",
+    marginTop: isOpen ? "0px" : "-240px",
     transition: isOpen ? "margin-top 0.5s, visibiliy 0.1s 0.5s" : "visibiliy 0.1s, margin-top 0.5s",
     borderBottom: isOpen ? "1px solid black" : "0px solid black"
   }
