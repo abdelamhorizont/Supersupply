@@ -64,9 +64,10 @@ export default function Project(props) {
                      </div>
                   }
 
-                  {(project.adress[0] || project.instagramLink) &&
+                  {/* {(project.website[0] || project.instagramLink) && */}
+                  {project.website[0] &&
                      <div className='project-info'>
-                        {project.adress[0] &&
+                        {project.website[0] &&
                            <div> <a target="_blank" href={project.website[0]?.link}>{project.website[0]?.title}</a></div>
                         }
                         {project.instagramLink &&
@@ -77,7 +78,7 @@ export default function Project(props) {
                      </div>
                   }
 
-                  {project.serviceTags[0] &&
+                  {project.serviceTags &&
                      <div className='project-info'>
                         {project.serviceTags?.map((tag, i) => {
                            return (
@@ -111,28 +112,28 @@ export default function Project(props) {
                      "overflow": "hidden"
                   }}
                >
-                  {project.images.length > 0 ?
-                     project.images.map((img) => {
+                  {project.images?.length > 0 &&
+                     project.images?.map((img) => {
                         return (
                            <SwiperSlide>
                               <GatsbyImage
                                  // className='hero-image'
                                  style={{ height: '100%' }}
-                                 // alt={project.images[0].alt || project.images[0].title || project.images[0].filename}
+                                 alt={project.images[0].alt || project.images[0].title || project.images[0].filename}
                                  image={getImage(img.gatsbyImageData)}
                               />
                            </SwiperSlide>
                         )
                      })
-                     :
-                     <GatsbyImage
-                        // className='hero-image'
-                        style={{ height: '100%' }}
-                        // alt={project.images[0].alt || project.images[0].title || project.images[0].filename}
-                        image={getImage(project.images[0]?.gatsbyImageData)}
-                     />
+                     // :
+                     // <GatsbyImage
+                     //    // className='hero-image'
+                     //    style={{ height: '100%' }}
+                     //    // alt={project.images[0].alt || project.images[0].title || project.images[0].filename}
+                     //    image={getImage(project?.images[0]?.gatsbyImageData)}
+                     // />
                   }
-                  {project.images.length > 1 &&
+                  {project.images?.length > 1 &&
                      <div className="swiper-buttons">
                         <div ref={navigationPrevRef} className="swiper-button-prev"> {mobile && <ArrowLeft />} </div>
                         <div ref={navigationNextRef} className="swiper-button-next"> {mobile && <ArrowRight />} </div>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { graphql, useStaticQuery, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -16,7 +16,7 @@ export default function ProjectList(props) {
          }
          <div className={!props.OurLocations && 'projectgrid'}>
             {
-               projects.map((project) => {
+               projects.map((project) => { 
                   return (
                      <Project OurLocations={props.OurLocations} data={project} collapsed={props.collapsed} />
                   )
@@ -43,6 +43,7 @@ export const query = graphql`
    listTitle
    linkProject {
       links {
+         ... on DatoCmsProject {
         id
         title
         images {
@@ -63,6 +64,29 @@ export const query = graphql`
          link
         }
         instagramLink
+       }
+       ... on DatoCmsOurLocation {
+         id
+         title
+         images {
+          gatsbyImageData
+         }
+         text {
+           value
+         }
+         adress {
+          title
+          link
+         }
+         serviceTags {
+          serviceTitle
+         }
+         website {
+          title
+          link
+         }
+         instagramLink
+        }
       }
    }
  }
