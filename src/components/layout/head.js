@@ -21,6 +21,7 @@ export default function Head({ title, description, image }) {
       {image && <meta property="og:image" content={image.url} />}
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
+      <meta name="theme-color" content="#FFFFFF" />
       {description && <meta name="twitter:description" content={description} />}
       {image && <meta name="twitter:image" content={image.url} />}
     </Helmet>
