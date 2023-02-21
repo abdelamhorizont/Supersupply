@@ -1,9 +1,8 @@
-
 html {
-   scroll-behavior : smooth;
+   scroll-behavior: smooth;
    font-size: clamp(18px, 1.3vw, 24px);
 
-   background-color:rgb(255, 255, 255);
+   background-color: rgb(255, 255, 255);
 }
 
 $breakpoint-tablet: 768px;
@@ -13,22 +12,31 @@ $fontsize: 1rem;
 $fontsize-mid: 1.3rem;
 $fontsize-big: 1.8rem;
 
-.contact{
+.contact {
    background-color: white;
-   padding  : 0vh 0vw 0vh 0vw;
+   padding: 0vh 0vw 0vh 0vw;
 
-   .text{
+   .text {
       // max-width: 92vw;
-      display        : flex;
+      display: flex;
       justify-content: center;
-      align-items    : center;
-      
+      align-items: center;
+
       p {
-         font-size  : $fontsize-mid;
+         font-size: $fontsize-mid;
          line-height: calc($fontsize-mid * 1.5);
          white-space: pre-line;
-   
+
       }
    }
 
+}
+
+@media (max-width: $breakpoint-tablet) {
+
+   html,
+   body {
+      background-color: rgb(255, 255, 255);
+
+   }
 }
